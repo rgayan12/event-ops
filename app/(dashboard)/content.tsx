@@ -1,9 +1,9 @@
 "use client";
 
+import CourseDetailDrawer from "@/app/(dashboard)/CourseDetailDrawer";
 import { Button, Progress, Tabs, TabsRef } from "flowbite-react";
 import type { NextPage } from "next";
 import { useRef, useState } from "react";
-import CorseDrawer from './corseDrawer'; 
 
 export const HomePageContent: NextPage = function () {
   const tabsRef = useRef<TabsRef>(null);
@@ -12,21 +12,52 @@ export const HomePageContent: NextPage = function () {
   return (
     <>
       <div className="min-h-[100vh] p-6">
-        {/* search bar container section */}
+        {/* First section */}
         <div className="flex items-center justify-between">
           <div className="w-[20%]">
             <h1 className="text-3xl font-bold">Dashboard</h1>
           </div>
-
           <div className="w-[70%]">
-            <form className="w-full mx-auto">   
-                <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                <div className="relative">
-                    <input type="search" id="default-search" className="block w-full p-3 ps-10 text-lg font-semibold text-gray-900 rounded-lg bg-orange-50" placeholder="Search" required />
-                    <button type="submit" className="text-white absolute end-2.5 bottom-2.5 font-medium rounded-lg text-sm px-4 py-2">
-                      <svg width="20" height="20" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><g clipPath="url(#clip0_6_12)"><path d="M24.6948 23.2219L18.4771 17.0042C20.1715 14.9319 21.0046 12.2876 20.804 9.61828C20.6035 6.94898 19.3846 4.45887 17.3996 2.66303C15.4146 0.867185 12.8152 -0.0970007 10.1392 -0.0300926C7.46324 0.0368155 4.91533 1.1297 3.02253 3.0225C1.12973 4.9153 0.0368461 7.46321 -0.0300621 10.1392C-0.0969702 12.8152 0.867215 15.4145 2.66306 17.3996C4.4589 19.3846 6.94901 20.6034 9.61831 20.804C12.2876 21.0045 14.9319 20.1715 17.0042 18.4771L23.2219 24.6948C23.4184 24.8845 23.6815 24.9895 23.9546 24.9871C24.2277 24.9848 24.489 24.8752 24.6821 24.6821C24.8753 24.489 24.9848 24.2277 24.9872 23.9546C24.9896 23.6814 24.8846 23.4183 24.6948 23.2219ZM10.4167 18.75C8.76851 18.75 7.15734 18.2612 5.78693 17.3456C4.41652 16.4299 3.34842 15.1284 2.71769 13.6057C2.08696 12.083 1.92193 10.4074 2.24347 8.7909C2.56502 7.17439 3.35869 5.68953 4.52413 4.5241C5.68956 3.35866 7.17442 2.56499 8.79093 2.24344C10.4074 1.9219 12.083 2.08693 13.6057 2.71766C15.1284 3.34839 16.4299 4.41649 17.3456 5.7869C18.2613 7.15731 18.75 8.76847 18.75 10.4167C18.7475 12.626 17.8688 14.7442 16.3065 16.3065C14.7442 17.8687 12.6261 18.7475 10.4167 18.75Z" fill="#A4A4A4"/></g><defs><clipPath id="clip0_6_12"><rect width="25" height="25" fill="white"/></clipPath></defs></svg>
-                    </button>
-                </div>
+            <form className="mx-auto w-full">
+              <label
+                htmlFor="default-search"
+                className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Search
+              </label>
+              <div className="relative">
+                <input
+                  type="search"
+                  id="default-search"
+                  className="block w-full rounded-lg bg-orange-50 p-3 ps-10 text-lg font-semibold text-gray-900"
+                  placeholder="Search"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="absolute bottom-2.5 end-2.5 rounded-lg px-4 py-2 text-sm font-medium text-white"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 25 25"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clipPath="url(#clip0_6_12)">
+                      <path
+                        d="M24.6948 23.2219L18.4771 17.0042C20.1715 14.9319 21.0046 12.2876 20.804 9.61828C20.6035 6.94898 19.3846 4.45887 17.3996 2.66303C15.4146 0.867185 12.8152 -0.0970007 10.1392 -0.0300926C7.46324 0.0368155 4.91533 1.1297 3.02253 3.0225C1.12973 4.9153 0.0368461 7.46321 -0.0300621 10.1392C-0.0969702 12.8152 0.867215 15.4145 2.66306 17.3996C4.4589 19.3846 6.94901 20.6034 9.61831 20.804C12.2876 21.0045 14.9319 20.1715 17.0042 18.4771L23.2219 24.6948C23.4184 24.8845 23.6815 24.9895 23.9546 24.9871C24.2277 24.9848 24.489 24.8752 24.6821 24.6821C24.8753 24.489 24.9848 24.2277 24.9872 23.9546C24.9896 23.6814 24.8846 23.4183 24.6948 23.2219ZM10.4167 18.75C8.76851 18.75 7.15734 18.2612 5.78693 17.3456C4.41652 16.4299 3.34842 15.1284 2.71769 13.6057C2.08696 12.083 1.92193 10.4074 2.24347 8.7909C2.56502 7.17439 3.35869 5.68953 4.52413 4.5241C5.68956 3.35866 7.17442 2.56499 8.79093 2.24344C10.4074 1.9219 12.083 2.08693 13.6057 2.71766C15.1284 3.34839 16.4299 4.41649 17.3456 5.7869C18.2613 7.15731 18.75 8.76847 18.75 10.4167C18.7475 12.626 17.8688 14.7442 16.3065 16.3065C14.7442 17.8687 12.6261 18.7475 10.4167 18.75Z"
+                        fill="#A4A4A4"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_6_12">
+                        <rect width="25" height="25" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </button>
+              </div>
             </form>
           </div>
 
@@ -116,14 +147,16 @@ export const HomePageContent: NextPage = function () {
               <div>
                 <Button.Group>
                   <Button
-                    color=""
+                    color="gray"
                     onClick={() => tabsRef.current?.setActiveTab(0)}
+                    className={activeTab === 0 ? "bg-[#EF8352]" : ""}
                   >
                     Courses
                   </Button>
                   <Button
-                    color=""
+                    color="gray"
                     onClick={() => tabsRef.current?.setActiveTab(1)}
+                    className={activeTab === 1 ? "bg-[#EF8352]" : ""}
                   >
                     Events
                   </Button>
@@ -132,82 +165,90 @@ export const HomePageContent: NextPage = function () {
             </div>
             <div>
               <div className="flex flex-col gap-3">
-                <Tabs aria-label="Default tabs" ref={tabsRef} onActiveTabChange={(tab) => setActiveTab(tab)}>
-                  <Tabs.Item title="courses" active>
+                <Tabs
+                  aria-label="Default tabs"
+                  ref={tabsRef}
+                  onActiveTabChange={(tab) => setActiveTab(tab)}
+                >
+                  <Tabs.Item title="Courses" active={activeTab === 0}>
                     <div className="flex flex-col gap-5">
                       <div className="flex items-center gap-5">
                         <h2 className="rounded-md bg-orange-200 px-3 py-1 text-teal-900">
                           01
                         </h2>
-                        <div className="mb-1 flex w-full flex-col justify-between">
+                        <div className="mb-1 flex w-full cursor-pointer flex-col justify-between">
                           <Progress
-                              progress={89}
-                              progressLabelPosition="outside"
-                              textLabel="Career Foundry UI Design Course"
-                              textLabelPosition="outside"
-                              size="sm"
-                              labelProgress
-                              labelText
-                              onClick={() => setOpenCourseDrawer(true)}
-                            />
+                            progress={89}
+                            progressLabelPosition="outside"
+                            textLabel="Career Foundry UI Design Course"
+                            textLabelPosition="outside"
+                            size="sm"
+                            labelProgress
+                            labelText
+                            onClick={() => setOpenCourseDrawer(true)}
+                          />
                         </div>
                       </div>
                       <div className="flex items-center gap-5">
                         <h2 className="rounded-md bg-orange-200 px-3 py-1 text-teal-900">
                           02
                         </h2>
-                        <div className="mb-1 flex w-full flex-col justify-between">
+                        <div className="mb-1 flex w-full cursor-pointer flex-col justify-between">
                           <Progress
-                              progress={22}
-                              progressLabelPosition="outside"
-                              textLabel="Udemy"
-                              textLabelPosition="outside"
-                              size="sm"
-                              labelProgress
-                              labelText
-                              onClick={() => setOpenCourseDrawer(true)}
-                            />
+                            progress={22}
+                            progressLabelPosition="outside"
+                            textLabel="Udemy"
+                            textLabelPosition="outside"
+                            size="sm"
+                            labelProgress
+                            labelText
+                            onClick={() => setOpenCourseDrawer(true)}
+                          />
                         </div>
                       </div>
                       <div className="flex items-center gap-5">
                         <h2 className="rounded-md bg-orange-200 px-3 py-1 text-teal-900">
                           03
                         </h2>
-                        <div className="mb-1 flex w-full flex-col justify-between">
+                        <div className="mb-1 flex w-full cursor-pointer flex-col justify-between">
                           <Progress
-                              progress={58}
-                              progressLabelPosition="outside"
-                              textLabel="Thinkful"
-                              textLabelPosition="outside"
-                              size="sm"
-                              labelProgress
-                              labelText
-                              onClick={() => setOpenCourseDrawer(true)}
-                            />
+                            progress={58}
+                            progressLabelPosition="outside"
+                            textLabel="Thinkful"
+                            textLabelPosition="outside"
+                            size="sm"
+                            labelProgress
+                            labelText
+                            onClick={() => setOpenCourseDrawer(true)}
+                          />
                         </div>
                       </div>
                       <div className="flex items-center gap-5">
                         <h2 className="rounded-md bg-orange-200 px-3 py-1 text-teal-900">
                           04
                         </h2>
-                        <div className="mb-1 flex w-full flex-col justify-between">
+                        <div className="mb-1 flex w-full cursor-pointer flex-col justify-between">
                           <Progress
-                              progress={30}
-                              progressLabelPosition="outside"
-                              textLabel="Google: Build Dynamic User Interfaces (UI) for Websites (Coursera)"
-                              textLabelPosition="outside"
-                              size="sm"
-                              labelProgress
-                              labelText
-                              onClick={() => setOpenCourseDrawer(true)}
-                            />
+                            progress={30}
+                            progressLabelPosition="outside"
+                            textLabel="Google: Build Dynamic User Interfaces (UI) for Websites (Coursera)"
+                            textLabelPosition="outside"
+                            size="sm"
+                            labelProgress
+                            labelText
+                            onClick={() => setOpenCourseDrawer(true)}
+                          />
                         </div>
                       </div>
                     </div>
                   </Tabs.Item>
-                  <Tabs.Item title="events">
-                    This is <span className="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</span>.
-                    Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+                  <Tabs.Item title="Events" active={activeTab === 1}>
+                    This is{" "}
+                    <span className="font-medium text-gray-800 dark:text-white">
+                      Dashboard tab's associated content
+                    </span>
+                    . Clicking another tab will toggle the visibility of this
+                    one for the next. The tab JavaScript swaps classes to
                     control the content visibility and styling.
                   </Tabs.Item>
                 </Tabs>
@@ -216,35 +257,92 @@ export const HomePageContent: NextPage = function () {
           </div>
         </div>
 
-        {/* third section */}
+        {/* Third section */}
         <div className="m-3 rounded-lg bg-white p-8 shadow-lg">
           <div className="mb-3">
             <h2 className="text-base font-semibold text-teal-900">
               List of contacts
             </h2>
           </div>
-            <div>
-              <div className="flex gap-8 w-full">
-                <form className="w-[30%]">   
-                    <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                    <div className="relative flex items-center">
-                      <input type="search" id="default-search" className="block w-full p-3 ps-3 text-md border border-[#A4A4A4] font-semibold text-gray-900 rounded-xl bg-white" placeholder="Search by First name and Last name....." required />
-                      <button type="submit" className="text-white absolute end-2.5 bottom-2.5 font-medium rounded-lg text-sm px-4 py-2">
-                        <svg width="18" height="18" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><g clipPath="url(#clip0_6_12)"><path d="M24.6948 23.2219L18.4771 17.0042C20.1715 14.9319 21.0046 12.2876 20.804 9.61828C20.6035 6.94898 19.3846 4.45887 17.3996 2.66303C15.4146 0.867185 12.8152 -0.0970007 10.1392 -0.0300926C7.46324 0.0368155 4.91533 1.1297 3.02253 3.0225C1.12973 4.9153 0.0368461 7.46321 -0.0300621 10.1392C-0.0969702 12.8152 0.867215 15.4145 2.66306 17.3996C4.4589 19.3846 6.94901 20.6034 9.61831 20.804C12.2876 21.0045 14.9319 20.1715 17.0042 18.4771L23.2219 24.6948C23.4184 24.8845 23.6815 24.9895 23.9546 24.9871C24.2277 24.9848 24.489 24.8752 24.6821 24.6821C24.8753 24.489 24.9848 24.2277 24.9872 23.9546C24.9896 23.6814 24.8846 23.4183 24.6948 23.2219ZM10.4167 18.75C8.76851 18.75 7.15734 18.2612 5.78693 17.3456C4.41652 16.4299 3.34842 15.1284 2.71769 13.6057C2.08696 12.083 1.92193 10.4074 2.24347 8.7909C2.56502 7.17439 3.35869 5.68953 4.52413 4.5241C5.68956 3.35866 7.17442 2.56499 8.79093 2.24344C10.4074 1.9219 12.083 2.08693 13.6057 2.71766C15.1284 3.34839 16.4299 4.41649 17.3456 5.7869C18.2613 7.15731 18.75 8.76847 18.75 10.4167C18.7475 12.626 17.8688 14.7442 16.3065 16.3065C14.7442 17.8687 12.6261 18.7475 10.4167 18.75Z" fill="#A4A4A4"/></g><defs><clipPath id="clip0_6_12"><rect width="25" height="25" fill="white"/></clipPath></defs></svg>
-                      </button>
-                    </div>
-                </form>
-                <form className="w-[20%]">   
-                    <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                    <div className="relative flex items-center">
-                      <input type="search" id="default-search" className="block w-full p-3 ps-3 text-md border border-[#A4A4A4] font-semibold text-gray-900 rounded-xl bg-white" placeholder="Filter by" required />
-                      <button type="submit" className="text-white absolute end-2.5 bottom-2.5 font-medium rounded-lg text-sm px-4 py-2">
-                        <svg width="16" height="12" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 0.5C14 0.775 13.7375 1 13.4167 1H0.583333C0.2625 1 0 0.775 0 0.5C0 0.225 0.2625 0 0.583333 0H13.4167C13.7375 0 14 0.225 14 0.5ZM8.75 9H5.25C4.92917 9 4.66667 9.225 4.66667 9.5C4.66667 9.775 4.92917 10 5.25 10H8.75C9.07083 10 9.33333 9.775 9.33333 9.5C9.33333 9.225 9.07083 9 8.75 9ZM11.0833 4.5H2.91667C2.59583 4.5 2.33333 4.725 2.33333 5C2.33333 5.275 2.59583 5.5 2.91667 5.5H11.0833C11.4042 5.5 11.6667 5.275 11.6667 5C11.6667 4.725 11.4042 4.5 11.0833 4.5Z" fill="#A4A4A4"/></svg>
-                      </button>
-                    </div>
-                </form>
-              </div>
+          <div>
+            <div className="flex w-full gap-8">
+              <form className="w-[30%]">
+                <label
+                  htmlFor="default-search"
+                  className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Search
+                </label>
+                <div className="relative flex items-center">
+                  <input
+                    type="search"
+                    id="default-search"
+                    className="text-md block w-full rounded-xl border border-[#A4A4A4] bg-white p-3 ps-3 font-semibold text-gray-900"
+                    placeholder="Search by First name and Last name....."
+                    required
+                  />
+                  <button
+                    type="submit"
+                    className="absolute bottom-2.5 end-2.5 rounded-lg px-4 py-2 text-sm font-medium text-white"
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 25 25"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clipPath="url(#clip0_6_12)">
+                        <path
+                          d="M24.6948 23.2219L18.4771 17.0042C20.1715 14.9319 21.0046 12.2876 20.804 9.61828C20.6035 6.94898 19.3846 4.45887 17.3996 2.66303C15.4146 0.867185 12.8152 -0.0970007 10.1392 -0.0300926C7.46324 0.0368155 4.91533 1.1297 3.02253 3.0225C1.12973 4.9153 0.0368461 7.46321 -0.0300621 10.1392C-0.0969702 12.8152 0.867215 15.4145 2.66306 17.3996C4.4589 19.3846 6.94901 20.6034 9.61831 20.804C12.2876 21.0045 14.9319 20.1715 17.0042 18.4771L23.2219 24.6948C23.4184 24.8845 23.6815 24.9895 23.9546 24.9871C24.2277 24.9848 24.489 24.8752 24.6821 24.6821C24.8753 24.489 24.9848 24.2277 24.9872 23.9546C24.9896 23.6814 24.8846 23.4183 24.6948 23.2219ZM10.4167 18.75C8.76851 18.75 7.15734 18.2612 5.78693 17.3456C4.41652 16.4299 3.34842 15.1284 2.71769 13.6057C2.08696 12.083 1.92193 10.4074 2.24347 8.7909C2.56502 7.17439 3.35869 5.68953 4.52413 4.5241C5.68956 3.35866 7.17442 2.56499 8.79093 2.24344C10.4074 1.9219 12.083 2.08693 13.6057 2.71766C15.1284 3.34839 16.4299 4.41649 17.3456 5.7869C18.2613 7.15731 18.75 8.76847 18.75 10.4167C18.7475 12.626 17.8688 14.7442 16.3065 16.3065C14.7442 17.8687 12.6261 18.7475 10.4167 18.75Z"
+                          fill="#A4A4A4"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_6_12">
+                          <rect width="25" height="25" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </button>
+                </div>
+              </form>
+              <form className="w-[20%]">
+                <label
+                  htmlFor="default-search"
+                  className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Search
+                </label>
+                <div className="relative flex items-center">
+                  <input
+                    type="search"
+                    id="default-search"
+                    className="text-md block w-full rounded-xl border border-[#A4A4A4] bg-white p-3 ps-3 font-semibold text-gray-900"
+                    placeholder="Filter by"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    className="absolute bottom-2.5 end-2.5 rounded-lg px-4 py-2 text-sm font-medium text-white"
+                  >
+                    <svg
+                      width="16"
+                      height="12"
+                      viewBox="0 0 14 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M14 0.5C14 0.775 13.7375 1 13.4167 1H0.583333C0.2625 1 0 0.775 0 0.5C0 0.225 0.2625 0 0.583333 0H13.4167C13.7375 0 14 0.225 14 0.5ZM8.75 9H5.25C4.92917 9 4.66667 9.225 4.66667 9.5C4.66667 9.775 4.92917 10 5.25 10H8.75C9.07083 10 9.33333 9.775 9.33333 9.5C9.33333 9.225 9.07083 9 8.75 9ZM11.0833 4.5H2.91667C2.59583 4.5 2.33333 4.725 2.33333 5C2.33333 5.275 2.59583 5.5 2.91667 5.5H11.0833C11.4042 5.5 11.6667 5.275 11.6667 5C11.6667 4.725 11.4042 4.5 11.0833 4.5Z"
+                        fill="#A4A4A4"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </form>
             </div>
+          </div>
 
           <div className="mt-5">
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -700,7 +798,11 @@ export const HomePageContent: NextPage = function () {
           </div>
         </div>
       </div>
-      <CorseDrawer openCourseDrawer={openCourseDrawer} setOpenCourseDrawer={setOpenCourseDrawer}/>
+      {/* Course Detail Drawer */}
+      <CourseDetailDrawer
+        openCourseDrawer={openCourseDrawer}
+        setOpenCourseDrawer={setOpenCourseDrawer}
+      />
     </>
   );
 };

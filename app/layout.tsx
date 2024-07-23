@@ -1,9 +1,9 @@
+import { cn } from "@/lib/utils";
 import { Flowbite, ThemeModeScript } from "flowbite-react";
 import { Inter as FontSans } from "next/font/google";
 import { Suspense, type FC, type PropsWithChildren } from "react";
 import "./globals.css";
 import { flowbiteTheme } from "./theme";
-import { cn } from "@/lib/utils";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -13,12 +13,12 @@ const fontSans = FontSans({
 const RootLayout: FC<PropsWithChildren> = function ({ children }) {
   return (
     <html lang="en">
-      {/* <head>
+      <head>
         <ThemeModeScript />
-      </head> */}
+      </head>
       <body
         className={cn(
-          "bg-background min-h-screen font-sans antialiased",
+          "min-h-screen bg-background font-sans antialiased",
           fontSans.variable,
         )}
         suppressHydrationWarning={true}

@@ -1,14 +1,13 @@
 "use client";
 
-import { SidebarProvider } from "@/context/SidebarContext";
 import type { FC, PropsWithChildren } from "react";
-import { DashboardSidebar } from "./navbar";
+import { DashboardSidebar } from "@/app/(dashboard)/sidebar";
 
 const DashboardLayout: FC<PropsWithChildren> = function ({ children }) {
   return (
-    <SidebarProvider>
+    <>
       <DashboardLayoutContent>{children}</DashboardLayoutContent>
-    </SidebarProvider>
+    </>
   );
 };
 
