@@ -245,7 +245,6 @@ export const HomePageContent: NextPage = function () {
                 </form>
               </div>
             </div>
-          </div>
 
           <div className="mt-5">
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -700,6 +699,7 @@ export const HomePageContent: NextPage = function () {
             </nav>
           </div>
         </div>
+      </div>
       <CorseDrawer openCourseDrawer={openCourseDrawer} setOpenCourseDrawer={setOpenCourseDrawer}/>
     </>
   );
